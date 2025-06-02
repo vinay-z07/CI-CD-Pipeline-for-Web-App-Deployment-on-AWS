@@ -6,7 +6,7 @@ This project demonstrates an end-to-end CI/CD pipeline to automatically deploy a
 
 ## 📁 Project Structure
 
-project/
+<pre> <code>```project/
 ├── .github/
 │ └── workflows/
 │ └── deploy.yml # GitHub Actions workflow
@@ -20,7 +20,7 @@ project/
 │ └── playbook.yml # Ansible playbook for server config
 ├── web/
 │ └── index.html # Sample static web page
-└── README.md
+└── README.md ```</code> </pre>
 ---
 
 ## 🛠️ Tech Stack
