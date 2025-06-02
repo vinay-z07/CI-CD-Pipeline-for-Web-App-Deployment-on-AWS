@@ -46,17 +46,19 @@ This project demonstrates an end-to-end CI/CD pipeline to automatically deploy a
 
 ## 🚀 Deployment Steps
 
-### 1. Clone the Repo
+# 1. Clone the Repo
 
-```bash
+**```bash 
 git clone https://github.com/<your-username>/webapp-cicd-terraform-ansible.git
-cd webapp-cicd-terraform-ansible
+cd webapp-cicd-terraform-ansible**
 
 # 2. Initialize and apply Terraform
-bash
+
+**```bash
 cd terraform
 terraform init
-terraform apply
+terraform apply**
+
 This will:
 
 Create an EC2 instance
@@ -66,19 +68,22 @@ Set up the security group
 Generate SSH key pairs (if defined)
 
 # 3. Configure Ansible Inventory
-After Terraform runs, get the EC2 public IP and add it to ansible/inventory.ini:
-[web]
-<ec2-public-ip> ansible_user=ubuntu ansible_ssh_private_key_file=../ssh_key/id_rsa
+
+(*After Terraform runs, get the EC2 public IP and add it to ansible/inventory.ini:*)  
+
+**[web]
+<ec2-public-ip> ansible_user=ubuntu ansible_ssh_private_key_file=../ssh_key/id_rsa**
+
 ---
 # 4. (Optional) Run Ansible locally
-bash
+**```bash
 cd ansible
 ansible-playbook -i inventory.ini playbook.yml
-This installs Nginx and deploys your web/index.html to the EC2 instance.
+This installs Nginx and deploys your web/index.html to the EC2 instance.**
 
-🔄 GitHub Actions Workflow
-The .github/workflows/deploy.yml file runs on every push to main. It:
-
+# 🔄 GitHub Actions Workflow
+The .github/workflows/deploy.yml file runs on every push to main. 
+It:
 Connects to the EC2 instance using SSH
 
 Runs the Ansible playbook remotely
@@ -93,21 +98,22 @@ AWS_SECRET_ACCESS_KEY
 
 ANSIBLE_SSH_PRIVATE_KEY (base64 encoded id_rsa)
 
-🧼 Destroy Infrastructure
+# 🧼 Destroy Infrastructure
 To remove all resources:
----
-bash
-cd terraform
-terraform destroy
 
-🔐 Security
+---
+**```bash
+cd terraform
+terraform destroy**
+
+# 🔐 Security
 Use .gitignore to exclude id_rsa (never commit private keys)
 
 Restrict inbound SSH access to your IP in the Terraform security group
 
 Use GitHub Secrets for all sensitive values
 
-📝 License
+# 📝 License
 This project is licensed under the MIT License.
 
 🙋‍♂️ Contact
